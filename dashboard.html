@@ -1,0 +1,661 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Electronic Agenda Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#005048",
+              "outline-variant": "#c1c6d6",
+              "secondary-fixed-dim": "#70d8c8",
+              "surface-dim": "#d8d9e3",
+              "tertiary-fixed-dim": "#ffb691",
+              "inverse-surface": "#2d3038",
+              secondary: "#006b5f",
+              background: "#f9f9ff",
+              "on-surface-variant": "#414754",
+              "inverse-primary": "#adc7ff",
+              "surface-bright": "#f9f9ff",
+              "primary-fixed-dim": "#adc7ff",
+              surface: "#f9f9ff",
+              "on-secondary-fixed": "#00201c",
+              "surface-variant": "#e0e2ec",
+              "on-tertiary-fixed-variant": "#783100",
+              outline: "#727785",
+              "on-error": "#ffffff",
+              "on-surface": "#191c23",
+              "surface-container-low": "#f2f3fd",
+              "on-tertiary-fixed": "#341100",
+              "surface-container-highest": "#e0e2ec",
+              "secondary-fixed": "#8df5e4",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              error: "#ba1a1a",
+              "on-secondary-container": "#007165",
+              "surface-container-high": "#e6e8f2",
+              "tertiary-container": "#c55500",
+              "on-primary-fixed-variant": "#004493",
+              tertiary: "#9e4300",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#ffdbcb",
+              "inverse-on-surface": "#eff0fa",
+              "on-tertiary-container": "#0e0200",
+              primary: "#005bbf",
+              "primary-fixed": "#d8e2ff",
+              "primary-container": "#1a73e8",
+              "surface-tint": "#005bc0",
+              "surface-container": "#ecedf7",
+              "secondary-container": "#8df5e4",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#001a41",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-background": "#191c23",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              md: "24px",
+              xl: "48px",
+              gutter: "24px",
+              lg: "32px",
+              base: "4px",
+              xs: "8px",
+              margin: "32px",
+              sm: "16px",
+            },
+            fontFamily: {
+              "display-lg": ["Inter"],
+              "display-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "label-md": ["Inter"],
+              "body-md": ["Inter"],
+            },
+            fontSize: {
+              "display-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "display-md": [
+                "24px",
+                {
+                  lineHeight: "32px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-lg": [
+                "16px",
+                { lineHeight: "24px", letterSpacing: "0", fontWeight: "400" },
+              ],
+              "label-md": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": [
+                "14px",
+                { lineHeight: "20px", letterSpacing: "0", fontWeight: "400" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      html.dark {
+        color-scheme: dark;
+      }
+
+      html.dark body {
+        background: #0b1220 !important;
+        color: #e2e8f0 !important;
+      }
+
+      html.dark .bg-white {
+        background-color: #111827 !important;
+      }
+
+      html.dark .bg-slate-50,
+      html.dark .bg-blue-50\/50,
+      html.dark .bg-surface-container-lowest,
+      html.dark .bg-surface-container-low,
+      html.dark .bg-surface,
+      html.dark .bg-surface-container,
+      html.dark .bg-surface-container-highest,
+      html.dark .bg-surface-container-lowest {
+        background-color: #111827 !important;
+      }
+
+      html.dark .bg-primary\/10,
+      html.dark .bg-secondary\/20,
+      html.dark .bg-slate-200\/40 {
+        background-color: rgba(148, 163, 184, 0.12) !important;
+      }
+
+      html.dark .border-slate-200 {
+        border-color: #334155 !important;
+      }
+
+      html.dark .text-slate-500,
+      html.dark .text-on-surface-variant,
+      html.dark .text-outline {
+        color: #94a3b8 !important;
+      }
+
+      html.dark .text-on-surface,
+      html.dark .text-on-background,
+      html.dark .text-blue-700 {
+        color: #e2e8f0 !important;
+      }
+
+      html.dark .hover\:bg-slate-50:hover,
+      html.dark .hover\:bg-slate-100:hover {
+        background-color: #1e293b !important;
+      }
+
+      /* Form elements in dark mode */
+      html.dark input,
+      html.dark textarea,
+      html.dark select {
+        background-color: #1f2937 !important;
+        color: #f9fafb !important;
+        border-color: #64748b !important;
+      }
+
+      html.dark input::placeholder,
+      html.dark textarea::placeholder {
+        color: #9ca3af !important;
+      }
+
+      html.dark input:focus,
+      html.dark textarea:focus,
+      html.dark select:focus {
+        background-color: #1f2937 !important;
+        color: #f9fafb !important;
+        border-color: #3b82f6 !important;
+      }
+
+      html.dark option {
+        background-color: #1f2937 !important;
+        color: #f9fafb !important;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden"
+  >
+    <!-- SideNavBar -->
+    <aside
+      class="fixed left-0 top-0 h-full w-[280px] border-r border-slate-200 bg-slate-50 flex flex-col py-8 z-50 hidden md:flex"
+    >
+      <div class="px-6 mb-10">
+        <h1 class="text-lg font-black text-blue-900 tracking-tight">
+          Agenda Pro
+        </h1>
+        <p class="text-xs text-slate-500 font-medium">
+          Systematic Productivity
+        </p>
+      </div>
+      <nav class="flex-1 px-2 space-y-1">
+        <!-- Dashboard Active -->
+        <a
+          class="flex items-center gap-3 text-blue-700 border-l-4 border-blue-700 font-bold bg-blue-50/50 px-4 py-3 transition-all duration-200 ease-in-out"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span class="font-sans font-medium text-[14px]">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:bg-slate-100 hover:text-blue-600 transition-all duration-200 ease-in-out"
+          href="task_manager.html"
+        >
+          <span
+            class="material-symbols-outlined"
+            data-icon="assignment_turned_in"
+            >assignment_turned_in</span
+          >
+          <span class="font-sans font-medium text-[14px]">Task Management</span>
+        </a>
+        <a
+          class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:bg-slate-100 hover:text-blue-600 transition-all duration-200 ease-in-out"
+          href="learning_tracker.html"
+        >
+          <span class="material-symbols-outlined" data-icon="menu_book"
+            >menu_book</span
+          >
+          <span class="font-sans font-medium text-[14px]"
+            >Learning Tracker</span
+          >
+        </a>
+        <a
+          class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:bg-slate-100 hover:text-blue-600 transition-all duration-200 ease-in-out"
+          href="reports.html"
+        >
+          <span class="material-symbols-outlined" data-icon="leaderboard"
+            >leaderboard</span
+          >
+          <span class="font-sans font-medium text-[14px]">Reports</span>
+        </a>
+        <a
+          class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:bg-slate-100 hover:text-blue-600 transition-all duration-200 ease-in-out"
+          href="profile_settings.html"
+        >
+          <span class="material-symbols-outlined" data-icon="person"
+            >person</span
+          >
+          <span class="font-sans font-medium text-[14px]">Profile</span>
+        </a>
+      </nav>
+      <div class="px-6 mt-auto">
+        <button
+          class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 duration-150 shadow-sm"
+        >
+          <span class="material-symbols-outlined text-sm" data-icon="add"
+            >add</span
+          >
+          New Entry
+        </button>
+      </div>
+    </aside>
+    <main class="md:ml-[280px] min-h-screen pb-16 md:pb-0">
+      <!-- TopNavBar -->
+      <header
+        class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm flex justify-between items-center px-6 h-16 w-full"
+      >
+        <div class="flex items-center gap-4">
+          <div class="md:hidden">
+            <span
+              class="material-symbols-outlined text-on-surface-variant"
+              data-icon="menu"
+              >menu</span
+            >
+          </div>
+          <span class="text-xl font-bold tracking-tight text-blue-800"
+            >Electronic Agenda</span
+          >
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="hidden lg:flex items-center gap-6">
+            <a
+              class="text-blue-700 font-semibold border-b-2 border-blue-700 h-16 flex items-center px-2"
+              href="overview.html"
+              >Overview</a
+            >
+            <a
+              class="text-slate-500 hover:bg-slate-50 transition-colors h-16 flex items-center px-2"
+              href="#"
+              >Schedule</a
+            >
+            <a
+              class="text-slate-500 hover:bg-slate-50 transition-colors h-16 flex items-center px-2"
+              href="#"
+              >Integrations</a
+            >
+          </div>
+          <div class="flex items-center gap-3">
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 text-slate-500 hover:bg-slate-50 transition-colors rounded-lg border border-slate-200"
+            >
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="language"
+                >language</span
+              >
+              <span class="font-sans antialiased text-sm tracking-tight"
+                >Kinyarwanda</span
+              >
+            </button>
+            <img
+              alt="User avatar"
+              class="w-10 h-10 rounded-full object-cover border border-slate-200"
+              data-alt="professional corporate headshot of a smiling man in a suit against a clean studio background, soft lighting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLAJXeIa9c1-6d2NukpXrNBiNr_4z6DIm_Kq_UGpsoieYhbkpUTsykbnL9161tbMsorpXSFlAffYWmsOwseJ18rXd1jYlzGvH3g8Vm2eOF6IH4aoknnN8IzvZufCcoijhg9BoH9u4tIgc4TRM1_GbiG9KUeYkQPH3fqt3BAGmzis0Sl8DSX0_QsjUkvxmVYovy9BSuYLPAUXUQnJ28v6YvTAII5k2NHEniJ1dTsQL7ckGqsSK9X1ZU2liwaspHw6qmtTle2CC-W3w"
+            />
+          </div>
+        </div>
+      </header>
+      <!-- Main Content Area -->
+      <div class="p-md md:p-lg space-y-md">
+        <!-- Greeting & Header -->
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-4"
+        >
+          <div>
+            <h2 class="font-display-lg text-display-lg text-on-surface">
+              Hello, User!
+            </h2>
+            <p class="text-on-surface-variant flex items-center gap-2">
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="calendar_today"
+                >calendar_today</span
+              >
+              October 24, 2023 • Tuesday
+            </p>
+          </div>
+          <div
+            class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-xl flex items-center gap-3 shadow-sm"
+          >
+            <span class="material-symbols-outlined" data-icon="trending_up"
+              >trending_up</span
+            >
+            <span class="font-bold">75% Weekly Completion Rate</span>
+          </div>
+        </div>
+        <!-- Bento Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <div
+            class="bg-white p-md rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)] border-l-4 border-primary"
+          >
+            <div class="flex justify-between items-start">
+              <div>
+                <p
+                  class="text-label-md font-label-md text-outline mb-1 uppercase"
+                >
+                  Total Tasks
+                </p>
+                <h3
+                  id="dashboard-total-tasks"
+                  class="text-display-md font-display-md text-on-surface"
+                >
+                  0
+                </h3>
+              </div>
+              <span
+                class="material-symbols-outlined text-primary p-2 bg-primary-fixed rounded-lg"
+                data-icon="list_alt"
+                >list_alt</span
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white p-md rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)] border-l-4 border-secondary"
+          >
+            <div class="flex justify-between items-start">
+              <div>
+                <p
+                  class="text-label-md font-label-md text-outline mb-1 uppercase"
+                >
+                  Completed
+                </p>
+                <h3 class="text-display-md font-display-md text-on-surface">
+                  8
+                </h3>
+              </div>
+              <span
+                class="material-symbols-outlined text-secondary p-2 bg-secondary-fixed rounded-lg"
+                data-icon="check_circle"
+                >check_circle</span
+              >
+            </div>
+          </div>
+          <div
+            class="bg-white p-md rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)] border-l-4 border-tertiary"
+          >
+            <div class="flex justify-between items-start">
+              <div>
+                <p
+                  class="text-label-md font-label-md text-outline mb-1 uppercase"
+                >
+                  Study Hours
+                </p>
+                <h3 class="text-display-md font-display-md text-on-surface">
+                  4.5
+                </h3>
+              </div>
+              <span
+                class="material-symbols-outlined text-tertiary p-2 bg-tertiary-fixed rounded-lg"
+                data-icon="menu_book"
+                >menu_book</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Split View: Tasks and Progress -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+          <!-- Today's Tasks Preview -->
+          <div
+            class="lg:col-span-7 bg-white p-md rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
+          >
+            <div class="flex justify-between items-center mb-6">
+              <h4
+                class="font-display-md text-body-lg font-bold text-on-surface"
+              >
+                Today’s Tasks
+              </h4>
+              <button
+                class="text-primary font-semibold text-label-md flex items-center gap-1 hover:underline"
+              >
+                View All
+                <span
+                  class="material-symbols-outlined text-sm"
+                  data-icon="arrow_forward"
+                  >arrow_forward</span
+                >
+              </button>
+            </div>
+            <div id="dashboard-task-container" class="space-y-4">
+              <!-- Tasks will be loaded dynamically -->
+            </div>
+          </div>
+          <!-- Learning Progress Chart/Stats -->
+          <div
+            class="lg:col-span-5 bg-white p-md rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
+          >
+            <h4
+              class="font-display-md text-body-lg font-bold text-on-surface mb-6"
+            >
+              Learning Progress
+            </h4>
+            <div class="space-y-6">
+              <!-- Mini Chart Visualization (CSS based) -->
+              <div
+                class="relative h-32 flex items-end justify-between px-2 gap-2"
+              >
+                <div
+                  class="bg-secondary/20 w-full rounded-t-lg h-[40%] relative group"
+                >
+                  <div
+                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    Mon
+                  </div>
+                  <div
+                    class="bg-secondary w-full rounded-t-lg h-full absolute bottom-0 transition-all hover:brightness-110"
+                  ></div>
+                </div>
+                <div
+                  class="bg-secondary/20 w-full rounded-t-lg h-[80%] relative group"
+                >
+                  <div
+                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    Tue
+                  </div>
+                  <div
+                    class="bg-secondary w-full rounded-t-lg h-full absolute bottom-0 transition-all hover:brightness-110"
+                  ></div>
+                </div>
+                <div
+                  class="bg-secondary/20 w-full rounded-t-lg h-[60%] relative group"
+                >
+                  <div
+                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    Wed
+                  </div>
+                  <div
+                    class="bg-secondary w-full rounded-t-lg h-full absolute bottom-0 transition-all hover:brightness-110"
+                  ></div>
+                </div>
+                <div
+                  class="bg-secondary/20 w-full rounded-t-lg h-[95%] relative group"
+                >
+                  <div
+                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    Thu
+                  </div>
+                  <div
+                    class="bg-secondary w-full rounded-t-lg h-full absolute bottom-0 transition-all hover:brightness-110"
+                  ></div>
+                </div>
+                <div
+                  class="bg-secondary/20 w-full rounded-t-lg h-[30%] relative group"
+                >
+                  <div
+                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    Fri
+                  </div>
+                  <div
+                    class="bg-secondary w-full rounded-t-lg h-full absolute bottom-0 transition-all hover:brightness-110"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="pt-4 border-t border-slate-100 grid grid-cols-2 gap-4"
+              >
+                <div>
+                  <p
+                    class="text-[10px] text-outline uppercase font-bold tracking-widest mb-1"
+                  >
+                    Target Hours
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-body-lg font-bold">15.0</span>
+                    <span
+                      class="text-xs text-secondary-container bg-on-secondary-container px-1.5 py-0.5 rounded"
+                      >+2.5</span
+                    >
+                  </div>
+                </div>
+                <div>
+                  <p
+                    class="text-[10px] text-outline uppercase font-bold tracking-widest mb-1"
+                  >
+                    Focus Score
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-body-lg font-bold">92%</span>
+                    <span
+                      class="material-symbols-outlined text-secondary text-sm"
+                      data-icon="verified"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >verified</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-surface-container-low p-4 rounded-xl border border-blue-50"
+              >
+                <p class="text-body-md italic text-on-surface-variant">
+                  "Efficiency is doing things right; effectiveness is doing the
+                  right things."
+                </p>
+                <p class="text-label-md text-primary font-bold mt-2">
+                  — Peter Drucker
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Contextual FAB (Dashboard only) -->
+        <div class="fixed bottom-8 right-8 z-50">
+          <button
+            class="bg-primary text-on-primary w-14 h-14 rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform"
+          >
+            <span class="material-symbols-outlined text-3xl" data-icon="add"
+              >add</span
+            >
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- BottomNavBar (Mobile only) -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 w-full bg-white h-16 flex justify-around items-center px-4 shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50"
+    >
+      <a class="flex flex-col items-center text-primary" href="#">
+        <span
+          class="material-symbols-outlined"
+          data-icon="dashboard"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >dashboard</span
+        >
+        <span class="text-[10px] font-bold">Dashboard</span>
+      </a>
+      <a
+        class="flex flex-col items-center text-slate-400"
+        href="task_manager.html"
+      >
+        <span class="material-symbols-outlined" data-icon="assignment_turned_in"
+          >assignment_turned_in</span
+        >
+        <span class="text-[10px]">Tasks</span>
+      </a>
+      <a
+        class="flex flex-col items-center text-slate-400"
+        href="learning_tracker.html"
+      >
+        <span class="material-symbols-outlined" data-icon="menu_book"
+          >menu_book</span
+        >
+        <span class="text-[10px]">Learn</span>
+      </a>
+      <a
+        class="flex flex-col items-center text-slate-400"
+        href="profile_settings.html"
+      >
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span class="text-[10px]">Profile</span>
+      </a>
+    </nav>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/taskManager.js"></script>
+  </body>
+</html>

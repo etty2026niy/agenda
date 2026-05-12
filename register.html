@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Agenda Pro</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+    <div
+      class="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden"
+    >
+      <div class="px-8 py-10">
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">
+          Create your account
+        </h1>
+        <p class="text-slate-500 mb-8">
+          Register to keep your agenda, tasks, and learning progress safe.
+        </p>
+
+        <div id="authMessage" class="invisible text-sm mb-4"></div>
+
+        <form id="registerForm" class="space-y-5">
+          <label class="block">
+            <span class="text-slate-700">Username</span>
+            <input
+              id="registerUsername"
+              type="text"
+              required
+              class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              placeholder="Your username"
+            />
+          </label>
+          <label class="block">
+            <span class="text-slate-700">Full name</span>
+            <input
+              id="registerFullName"
+              type="text"
+              class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              placeholder="Optional"
+            />
+          </label>
+          <label class="block">
+            <span class="text-slate-700">Email</span>
+            <input
+              id="registerEmail"
+              type="email"
+              required
+              class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              placeholder="you@example.com"
+            />
+          </label>
+          <label class="block">
+            <span class="text-slate-700">Password</span>
+            <input
+              id="registerPassword"
+              type="password"
+              required
+              class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              placeholder="Choose a password"
+            />
+          </label>
+          <button
+            type="submit"
+            class="w-full rounded-2xl bg-blue-600 text-white py-3 font-semibold hover:bg-blue-700 transition"
+          >
+            Register
+          </button>
+        </form>
+
+        <div class="mt-8 text-center text-sm text-slate-500">
+          Already have an account?
+          <a
+            href="login.html"
+            class="font-semibold text-blue-600 hover:underline"
+            >Sign in</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+  </body>
+</html>

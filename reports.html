@@ -1,0 +1,661 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Reports - Electronic Agenda</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html.dark {
+        color-scheme: dark;
+      }
+
+      html.dark body {
+        background: #0b1220 !important;
+        color: #e2e8f0 !important;
+      }
+
+      html.dark .bg-white,
+      html.dark .bg-slate-50,
+      html.dark .bg-primary\/10,
+      html.dark .bg-secondary\/20,
+      html.dark .bg-surface-container-lowest,
+      html.dark .bg-surface-container,
+      html.dark .bg-surface,
+      html.dark .bg-surface-container-high,
+      html.dark .bg-surface-container-highest,
+      html.dark .bg-blue-50\/50 {
+        background-color: #111827 !important;
+      }
+
+      html.dark .bg-slate-200\/40 {
+        background-color: rgba(148, 163, 184, 0.12) !important;
+      }
+
+      html.dark .border-slate-200 {
+        border-color: #334155 !important;
+      }
+
+      html.dark .text-slate-500,
+      html.dark .text-on-surface-variant,
+      html.dark .text-outline {
+        color: #94a3b8 !important;
+      }
+
+      html.dark .text-on-surface,
+      html.dark .text-on-background,
+      html.dark .text-blue-700 {
+        color: #e2e8f0 !important;
+      }
+
+      html.dark .hover\:bg-slate-50:hover,
+      html.dark .hover\:bg-slate-100:hover {
+        background-color: #1e293b !important;
+      }
+
+      /* Form elements in dark mode */
+      html.dark input,
+      html.dark textarea,
+      html.dark select {
+        background-color: #1f2937 !important;
+        color: #f9fafb !important;
+        border-color: #64748b !important;
+      }
+
+      html.dark input::placeholder,
+      html.dark textarea::placeholder {
+        color: #9ca3af !important;
+      }
+
+      html.dark input:focus,
+      html.dark textarea:focus,
+      html.dark select:focus {
+        background-color: #1f2937 !important;
+        color: #f9fafb !important;
+        border-color: #3b82f6 !important;
+      }
+
+      html.dark option {
+        background-color: #1f2937 !important;
+        color: #f9fafb !important;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#005048",
+              "outline-variant": "#c1c6d6",
+              "secondary-fixed-dim": "#70d8c8",
+              "surface-dim": "#d8d9e3",
+              "tertiary-fixed-dim": "#ffb691",
+              "inverse-surface": "#2d3038",
+              secondary: "#006b5f",
+              background: "#f9f9ff",
+              "on-surface-variant": "#414754",
+              "inverse-primary": "#adc7ff",
+              "surface-bright": "#f9f9ff",
+              "primary-fixed-dim": "#adc7ff",
+              surface: "#f9f9ff",
+              "on-secondary-fixed": "#00201c",
+              "surface-variant": "#e0e2ec",
+              "on-tertiary-fixed-variant": "#783100",
+              outline: "#727785",
+              "on-error": "#ffffff",
+              "on-surface": "#191c23",
+              "surface-container-low": "#f2f3fd",
+              "on-tertiary-fixed": "#341100",
+              "surface-container-highest": "#e0e2ec",
+              "secondary-fixed": "#8df5e4",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              error: "#ba1a1a",
+              "on-secondary-container": "#007165",
+              "surface-container-high": "#e6e8f2",
+              "tertiary-container": "#c55500",
+              "on-primary-fixed-variant": "#004493",
+              tertiary: "#9e4300",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#ffdbcb",
+              "inverse-on-surface": "#eff0fa",
+              "on-tertiary-container": "#0e0200",
+              primary: "#005bbf",
+              "primary-fixed": "#d8e2ff",
+              "primary-container": "#1a73e8",
+              "surface-tint": "#005bc0",
+              "surface-container": "#ecedf7",
+              "secondary-container": "#8df5e4",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#001a41",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-background": "#191c23",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              md: "24px",
+              xl: "48px",
+              gutter: "24px",
+              lg: "32px",
+              base: "4px",
+              xs: "8px",
+              margin: "32px",
+              sm: "16px",
+            },
+            fontFamily: {
+              "display-lg": ["Inter"],
+              "display-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "label-md": ["Inter"],
+              "body-md": ["Inter"],
+            },
+            fontSize: {
+              "display-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "display-md": [
+                "24px",
+                {
+                  lineHeight: "32px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-lg": [
+                "16px",
+                { lineHeight: "24px", letterSpacing: "0", fontWeight: "400" },
+              ],
+              "label-md": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": [
+                "14px",
+                { lineHeight: "20px", letterSpacing: "0", fontWeight: "400" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-background min-h-screen flex">
+    <!-- SideNavBar -->
+    <aside
+      class="fixed left-0 top-0 h-full w-[280px] border-r bg-slate-50 border-slate-200 shadow-none flex flex-col py-8 z-50"
+    >
+      <div class="px-6 mb-8">
+        <h1 class="text-lg font-black text-blue-900">Agenda Pro</h1>
+        <p class="text-xs text-slate-500 font-medium tracking-wide">
+          Systematic Productivity
+        </p>
+      </div>
+      <nav class="flex-1 space-y-1">
+        <!-- Dashboard -->
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:text-blue-600 transition-all duration-200 ease-in-out font-medium text-[14px]"
+          href="dashboard.html"
+        >
+          <span class="material-symbols-outlined" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span>Dashboard</span>
+        </a>
+        <!-- Task Management -->
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:text-blue-600 transition-all duration-200 ease-in-out font-medium text-[14px]"
+          href="task_manager.html"
+        >
+          <span
+            class="material-symbols-outlined"
+            data-icon="assignment_turned_in"
+            >assignment_turned_in</span
+          >
+          <span>Task Management</span>
+        </a>
+        <!-- Learning Tracker -->
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:text-blue-600 transition-all duration-200 ease-in-out font-medium text-[14px]"
+          href="learning_tracker.html"
+        >
+          <span class="material-symbols-outlined" data-icon="menu_book"
+            >menu_book</span
+          >
+          <span>Learning Tracker</span>
+        </a>
+        <!-- Reports (ACTIVE) -->
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-blue-700 border-l-4 border-blue-700 font-bold bg-blue-50/50 transition-all duration-200 ease-in-out text-[14px]"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="leaderboard"
+            >leaderboard</span
+          >
+          <span>Reports</span>
+        </a>
+        <!-- Profile -->
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:text-blue-600 transition-all duration-200 ease-in-out font-medium text-[14px]"
+          href="profile_settings.html"
+        >
+          <span class="material-symbols-outlined" data-icon="person"
+            >person</span
+          >
+          <span>Profile</span>
+        </a>
+      </nav>
+      <div class="px-6 mt-auto">
+        <button
+          class="w-full py-3 bg-primary text-on-primary font-bold rounded-lg shadow-sm active:scale-95 transition-transform duration-150 flex items-center justify-center gap-2"
+        >
+          <span class="material-symbols-outlined" data-icon="add">add</span>
+          New Entry
+        </button>
+      </div>
+    </aside>
+    <div class="flex-1 ml-[280px] flex flex-col min-h-screen">
+      <!-- TopNavBar -->
+      <header
+        class="bg-white text-blue-700 font-sans antialiased text-sm tracking-tight border-b border-slate-200 shadow-sm flex justify-between items-center px-6 h-16 w-full sticky top-0 z-40"
+      >
+        <div class="flex items-center gap-6">
+          <div class="text-xl font-bold tracking-tight text-blue-800">
+            Electronic Agenda
+          </div>
+          <div class="relative group">
+            <span
+              class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 group-focus-within:text-blue-500"
+            >
+              <span class="material-symbols-outlined" data-icon="search"
+                >search</span
+              >
+            </span>
+            <input
+              class="pl-10 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 w-64 transition-all"
+              placeholder="Search reports..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-1 text-slate-500">
+            <span
+              class="material-symbols-outlined cursor-pointer hover:bg-slate-50 p-2 rounded-full transition-colors"
+              data-icon="language"
+              >language</span
+            >
+            <span class="font-medium">Kinyarwanda</span>
+          </div>
+          <div
+            class="w-8 h-8 rounded-full overflow-hidden border border-slate-200 shadow-sm"
+          >
+            <img
+              alt="User avatar"
+              class="w-full h-full object-cover"
+              data-alt="Close up professional headshot of a user with a neutral expression and soft lighting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHMIKo6-xUWlyDSrepVrJIeRax7McU1ivX52ugGkiG1OU5jIg3p1-_rZCSEaV7dK6HqDB97_8Yg-0AIvTeqpd4XyTBSC-KYNtCHV38AIuIg-46kt5aNuCdQqlbL7vVCuycS-z32UjlhsEYB2Dj4iHQJRYfTA5fVZIpK6EEh8qBOGFMFCPTgw9J3aVc98BJ9rx5VBvmCZhSp4Wp9iTl5sXDRgdaZ6yI5UsuDj5S0Rf99hOAxgifQuiPjYtEkR3ajOsgptNMccXVHQY"
+            />
+          </div>
+        </div>
+      </header>
+      <!-- Main Content Scroll Area -->
+      <main class="flex-1 overflow-y-auto p-md space-y-md pb-16 md:pb-0">
+        <div class="flex flex-col gap-xs">
+          <h2 class="font-display-lg text-display-lg text-on-surface">
+            Performance Analytics
+          </h2>
+          <p class="font-body-md text-body-md text-on-surface-variant">
+            Comprehensive breakdown of your systematic productivity metrics.
+          </p>
+        </div>
+        <!-- Bento Grid Layout -->
+        <div class="grid grid-cols-12 gap-md">
+          <!-- Main Productivity Card -->
+          <div
+            class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-md flex flex-col justify-between overflow-hidden relative group"
+          >
+            <div class="relative z-10 flex justify-between items-start">
+              <div class="space-y-base">
+                <h3 class="font-display-md text-display-md text-on-surface">
+                  Daily Summary
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant max-w-xs"
+                >
+                  You are exceeding your average daily output by 12% compared to
+                  last week.
+                </p>
+              </div>
+              <div class="flex flex-col items-end">
+                <span class="text-5xl font-black text-primary">80%</span>
+                <span
+                  class="font-label-md text-label-md text-primary tracking-widest uppercase"
+                  >Productive</span
+                >
+              </div>
+            </div>
+            <div class="mt-xl h-32 flex items-end gap-2 px-base">
+              <div
+                class="flex-1 bg-primary/10 rounded-t-lg h-[40%] transition-all hover:h-[50%] hover:bg-primary/20 cursor-help"
+                title="Mon: 40%"
+              ></div>
+              <div
+                class="flex-1 bg-primary/10 rounded-t-lg h-[65%] transition-all hover:h-[75%] hover:bg-primary/20 cursor-help"
+                title="Tue: 65%"
+              ></div>
+              <div
+                class="flex-1 bg-primary/10 rounded-t-lg h-[90%] transition-all hover:h-[95%] hover:bg-primary/20 cursor-help"
+                title="Wed: 90%"
+              ></div>
+              <div
+                class="flex-1 bg-primary rounded-t-lg h-[80%] transition-all hover:h-[85%] cursor-help"
+                title="Today: 80%"
+              ></div>
+              <div class="flex-1 bg-slate-100 rounded-t-lg h-[20%]"></div>
+              <div class="flex-1 bg-slate-100 rounded-t-lg h-[20%]"></div>
+              <div class="flex-1 bg-slate-100 rounded-t-lg h-[20%]"></div>
+            </div>
+            <div
+              class="absolute -right-16 -bottom-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/10 transition-colors"
+            ></div>
+          </div>
+          <!-- Insights Card -->
+          <div
+            class="col-span-12 lg:col-span-4 bg-primary text-on-primary rounded-xl shadow-[0_4px_12px_rgba(0,91,191,0.15)] p-md flex flex-col gap-sm overflow-hidden relative"
+          >
+            <div class="flex items-center gap-xs">
+              <span class="material-symbols-outlined" data-icon="lightbulb"
+                >lightbulb</span
+              >
+              <h3 class="font-display-md text-display-md">Smart Insights</h3>
+            </div>
+            <div class="flex-1 space-y-md">
+              <div class="p-sm bg-white/10 rounded-lg backdrop-blur-sm">
+                <p class="font-body-lg text-body-lg">
+                  "You study best in the morning!"
+                </p>
+                <p class="text-xs text-white/70 mt-1">
+                  Focus levels are 25% higher between 7:00 AM - 10:00 AM.
+                </p>
+              </div>
+              <div
+                class="p-sm bg-white/10 rounded-lg backdrop-blur-sm border-l-4 border-secondary-fixed"
+              >
+                <p class="font-body-md text-body-md">
+                  Schedule deep-work for tomorrow morning to maximize
+                  efficiency.
+                </p>
+              </div>
+            </div>
+            <img
+              alt="Decorative Graph"
+              class="absolute -right-4 -bottom-4 opacity-20 w-32 h-32"
+              data-alt="Minimalist abstract upward trend line graph on a deep professional blue background with soft lighting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ6icJzIYDGY6CZA5GDz1byjol3db_W3aES-GcuZzM65CkU0mNjQcZywmMkOx6HP1vicgzsy4gfB9nzXF5lZiUCLTFLTn78WCHcwC9XYnHStzlWIBrGi2sSiiHPhM54F8_YYPn1Hi-N-uppw3cyRau7SIb894SXqK6laJhStqsIcB2VEUMEMZ02GjFmkZqdLn6PUzKgatFcF__mtANEOcmi6CZr-7yO-cF45av1w3XAPvojRkT_wiJy3qmtl18x-FXex-DwFDRhMQ"
+            />
+          </div>
+          <!-- Weekly Goals Card -->
+          <div
+            class="col-span-12 md:col-span-6 bg-surface-container-lowest rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-md flex flex-col gap-md"
+          >
+            <div class="flex justify-between items-center">
+              <h3 class="font-display-md text-display-md text-on-surface">
+                Weekly Study Goals
+              </h3>
+              <span
+                class="material-symbols-outlined text-outline"
+                data-icon="more_vert"
+                >more_vert</span
+              >
+            </div>
+            <div class="space-y-md">
+              <div class="space-y-xs">
+                <div class="flex justify-between font-label-md text-label-md">
+                  <span class="text-on-surface"
+                    >Data Structures &amp; Algos</span
+                  >
+                  <span class="text-secondary">75%</span>
+                </div>
+                <div
+                  class="h-2 w-full bg-slate-100 rounded-full overflow-hidden"
+                >
+                  <div class="h-full bg-secondary w-3/4 rounded-full"></div>
+                </div>
+              </div>
+              <div class="space-y-xs">
+                <div class="flex justify-between font-label-md text-label-md">
+                  <span class="text-on-surface">Advanced Economics</span>
+                  <span class="text-tertiary">40%</span>
+                </div>
+                <div
+                  class="h-2 w-full bg-slate-100 rounded-full overflow-hidden"
+                >
+                  <div class="h-full bg-tertiary w-2/5 rounded-full"></div>
+                </div>
+              </div>
+              <div class="space-y-xs">
+                <div class="flex justify-between font-label-md text-label-md">
+                  <span class="text-on-surface">Corporate Governance</span>
+                  <span class="text-primary">90%</span>
+                </div>
+                <div
+                  class="h-2 w-full bg-slate-100 rounded-full overflow-hidden"
+                >
+                  <div class="h-full bg-primary w-[90%] rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Task Completion Rates -->
+          <div
+            class="col-span-12 md:col-span-6 bg-surface-container-lowest rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-md flex flex-col gap-md"
+          >
+            <div class="flex justify-between items-center">
+              <h3 class="font-display-md text-display-md text-on-surface">
+                Task Completion
+              </h3>
+              <div class="flex items-center gap-xs text-secondary font-medium">
+                <span
+                  class="material-symbols-outlined text-[18px]"
+                  data-icon="trending_up"
+                  >trending_up</span
+                >
+                <span class="text-xs">+8% this week</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-sm flex-1">
+              <div
+                class="bg-surface-container-low p-sm rounded-lg flex flex-col justify-center items-center gap-xs"
+              >
+                <span class="text-3xl font-bold text-on-surface">42</span>
+                <span
+                  class="font-label-md text-label-md text-on-surface-variant uppercase text-center"
+                  >Completed Tasks</span
+                >
+              </div>
+              <div
+                class="bg-surface-container-low p-sm rounded-lg flex flex-col justify-center items-center gap-xs"
+              >
+                <span class="text-3xl font-bold text-outline">12</span>
+                <span
+                  class="font-label-md text-label-md text-on-surface-variant uppercase text-center"
+                  >Pending Items</span
+                >
+              </div>
+              <div
+                class="col-span-2 bg-secondary-container text-on-secondary-container p-sm rounded-lg flex items-center justify-between"
+              >
+                <div class="flex items-center gap-xs">
+                  <span
+                    class="material-symbols-outlined"
+                    data-icon="check_circle"
+                    >check_circle</span
+                  >
+                  <span class="font-body-md font-semibold"
+                    >Total Efficiency</span
+                  >
+                </div>
+                <span class="text-xl font-black">94.2%</span>
+              </div>
+            </div>
+          </div>
+          <!-- Learning/Growth specialized Time-blocker view -->
+          <div
+            class="col-span-12 bg-surface-container-lowest rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-md"
+          >
+            <div class="flex justify-between items-center mb-md">
+              <h3 class="font-display-md text-display-md text-on-surface">
+                Learning Distribution
+              </h3>
+              <div
+                class="flex border border-slate-200 rounded-lg overflow-hidden text-xs"
+              >
+                <button
+                  class="px-3 py-1.5 bg-slate-100 font-bold border-r border-slate-200"
+                >
+                  Daily
+                </button>
+                <button class="px-3 py-1.5 hover:bg-slate-50 transition-colors">
+                  Weekly
+                </button>
+                <button class="px-3 py-1.5 hover:bg-slate-50 transition-colors">
+                  Monthly
+                </button>
+              </div>
+            </div>
+            <div class="relative overflow-x-auto">
+              <div
+                class="min-w-[600px] grid grid-cols-24 gap-1 h-32 bg-slate-50 rounded-lg p-2"
+              >
+                <!-- Time blocks with semi-transparent teal -->
+                <div
+                  class="col-span-2 bg-slate-200/40 rounded flex items-center justify-center text-[10px] text-slate-400"
+                >
+                  08:00
+                </div>
+                <div
+                  class="col-span-4 bg-secondary/20 border border-secondary/30 rounded flex items-center justify-center text-[10px] text-on-secondary-container font-bold"
+                >
+                  Deep Learning
+                </div>
+                <div class="col-span-1"></div>
+                <div
+                  class="col-span-3 bg-secondary/20 border border-secondary/30 rounded flex items-center justify-center text-[10px] text-on-secondary-container font-bold"
+                >
+                  Research
+                </div>
+                <div
+                  class="col-span-5 bg-slate-200/40 rounded flex items-center justify-center text-[10px] text-slate-400"
+                >
+                  Core Tasks
+                </div>
+                <div
+                  class="col-span-3 bg-secondary/20 border border-secondary/30 rounded flex items-center justify-center text-[10px] text-on-secondary-container font-bold"
+                >
+                  Strategy
+                </div>
+                <div
+                  class="col-span-6 bg-slate-200/40 rounded flex items-center justify-center text-[10px] text-slate-400"
+                >
+                  Meetings
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- Mobile Bottom Nav (Hidden on Desktop) -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 h-16 flex items-center justify-around z-50"
+    >
+      <a
+        class="text-slate-500 flex flex-col items-center"
+        href="dashboard.html"
+      >
+        <span class="material-symbols-outlined" data-icon="dashboard"
+          >dashboard</span
+        >
+        <span class="text-[10px] font-bold">Home</span>
+      </a>
+      <a
+        class="text-slate-500 flex flex-col items-center"
+        href="task_manager.html"
+      >
+        <span class="material-symbols-outlined" data-icon="assignment_turned_in"
+          >assignment_turned_in</span
+        >
+        <span class="text-[10px] font-bold">Tasks</span>
+      </a>
+      <div class="relative -top-6">
+        <button
+          class="w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center"
+        >
+          <span class="material-symbols-outlined text-[32px]" data-icon="add"
+            >add</span
+          >
+        </button>
+      </div>
+      <a class="text-blue-700 flex flex-col items-center" href="#">
+        <span
+          class="material-symbols-outlined"
+          data-icon="leaderboard"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >leaderboard</span
+        >
+        <span class="text-[10px] font-bold">Reports</span>
+      </a>
+      <a
+        class="text-slate-500 flex flex-col items-center"
+        href="profile_settings.html"
+      >
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span class="text-[10px] font-bold">Profile</span>
+      </a>
+    </nav>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+  </body>
+</html>
