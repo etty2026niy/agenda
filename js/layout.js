@@ -1,19 +1,27 @@
 // Layout management for protected pages
 // Handles session protection, theme toggle, and sidebar signout
 
+// Apply theme immediately to prevent flash of wrong theme
+(function() {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  const htmlElement = document.documentElement;
+
+  if (savedTheme === "dark") {
+    htmlElement.classList.remove("light");
+    htmlElement.classList.add("dark");
+  } else {
+    htmlElement.classList.remove("dark");
+    htmlElement.classList.add("light");
+  }
+})();
+
 function initializeLayout() {
   console.log("Initializing layout...");
 
   console.log("Initializing layout features");
 
-  // 2. Initialize dark mode toggle (only on profile settings page)
-  if (window.location.pathname.includes("profile_settings.html")) {
-    initializeDarkModeToggle();
-  } else {
-    // Load saved theme on other pages
-    const savedTheme = localStorage.getItem("theme") || "light";
-    applyTheme(savedTheme);
-  }
+  // Initialize dark mode toggle on all pages
+  initializeDarkModeToggle();
 
   // 3. Add signout button to sidebar
   addSignoutButton();

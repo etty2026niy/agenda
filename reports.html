@@ -298,10 +298,10 @@
     <div class="flex-1 ml-[280px] flex flex-col min-h-screen">
       <!-- TopNavBar -->
       <header
-        class="bg-white text-blue-700 font-sans antialiased text-sm tracking-tight border-b border-slate-200 shadow-sm flex justify-between items-center px-6 h-16 w-full sticky top-0 z-40"
+        class="bg-white dark:bg-slate-900 text-blue-700 font-sans antialiased text-sm tracking-tight border-b border-slate-200 dark:border-slate-800 shadow-sm flex justify-between items-center px-6 h-16 w-full sticky top-0 z-40"
       >
         <div class="flex items-center gap-6">
-          <div class="text-xl font-bold tracking-tight text-blue-800">
+          <div class="text-xl font-bold tracking-tight text-blue-800 dark:text-blue-300">
             Electronic Agenda
           </div>
           <div class="relative group">
@@ -313,16 +313,26 @@
               >
             </span>
             <input
-              class="pl-10 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 w-64 transition-all"
+              class="pl-10 pr-4 py-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 w-64 transition-all text-slate-900 dark:text-slate-100"
               placeholder="Search reports..."
               type="text"
             />
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <div class="flex items-center gap-1 text-slate-500">
+          <button
+            class="hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors p-2 rounded-lg active:scale-95 duration-150"
+            title="Toggle Theme"
+          >
             <span
-              class="material-symbols-outlined cursor-pointer hover:bg-slate-50 p-2 rounded-full transition-colors"
+              class="material-symbols-outlined text-blue-700 dark:text-blue-400"
+              data-icon="dark_mode"
+              >dark_mode</span
+            >
+          </button>
+          <div class="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+            <span
+              class="material-symbols-outlined cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 p-2 rounded-full transition-colors"
               data-icon="language"
               >language</span
             >
