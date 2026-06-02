@@ -12,68 +12,81 @@
       class="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden"
     >
       <div class="px-8 py-10">
-        <h1 class="text-3xl font-bold text-slate-900 mb-2">
-          Create your account
-        </h1>
-        <p class="text-slate-500 mb-8">
-          Register to keep your agenda, tasks, and learning progress safe.
-        </p>
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h1 class="text-3xl font-bold text-slate-900 mb-2" data-translate-key="createAccount">Create your account</h1>
+            <p class="text-slate-500" data-translate-key="registerDescription">Register to keep your agenda, tasks, and learning progress safe.</p>
+          </div>
+          <button
+            id="languageSwitchButton"
+            class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold hover:bg-slate-50"
+          >
+            <span class="material-symbols-outlined" data-icon="language">language</span>
+            <span id="languageLabel">Kinyarwanda</span>
+          </button>
+        </div>
 
         <div id="authMessage" class="invisible text-sm mb-4"></div>
 
         <form id="registerForm" class="space-y-5">
           <label class="block">
-            <span class="text-slate-700">Username</span>
+            <span class="text-slate-700" data-translate-key="usernameLabel">Username</span>
             <input
               id="registerUsername"
               type="text"
               required
               class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
               placeholder="Your username"
+              data-placeholder-key="usernamePlaceholder"
             />
           </label>
           <label class="block">
-            <span class="text-slate-700">Full name</span>
+            <span class="text-slate-700" data-translate-key="fullNameLabel">Full name</span>
             <input
               id="registerFullName"
               type="text"
               class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
               placeholder="Optional"
+              data-placeholder-key="fullNamePlaceholder"
             />
           </label>
           <label class="block">
-            <span class="text-slate-700">Email</span>
+            <span class="text-slate-700" data-translate-key="emailLabel">Email</span>
             <input
               id="registerEmail"
               type="email"
               required
               class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
               placeholder="you@example.com"
+              data-placeholder-key="emailPlaceholder"
             />
           </label>
           <label class="block">
-            <span class="text-slate-700">Password</span>
+            <span class="text-slate-700" data-translate-key="passwordLabel">Password</span>
             <input
               id="registerPassword"
               type="password"
               required
               class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
               placeholder="Choose a password"
+              data-placeholder-key="passwordPlaceholder"
             />
           </label>
           <button
             type="submit"
             class="w-full rounded-2xl bg-blue-600 text-white py-3 font-semibold hover:bg-blue-700 transition"
+            data-translate-key="registerButton"
           >
             Register
           </button>
         </form>
 
         <div class="mt-8 text-center text-sm text-slate-500">
-          Already have an account?
+          <span data-translate-key="alreadyHaveAccount">Already have an account?</span>
           <a
             href="login.html"
             class="font-semibold text-blue-600 hover:underline"
+            data-translate-key="signInLink"
             >Sign in</a
           >
         </div>
@@ -81,5 +94,44 @@
     </div>
 
     <script src="js/auth.js"></script>
+    <script src="js/translation.js"></script>
+    <script>
+      const registerTranslations = {
+        en: {
+          createAccount: "Create your account",
+          registerDescription: "Register to keep your agenda, tasks, and learning progress safe.",
+          usernameLabel: "Username",
+          usernamePlaceholder: "Your username",
+          fullNameLabel: "Full name",
+          fullNamePlaceholder: "Optional",
+          emailLabel: "Email",
+          emailPlaceholder: "you@example.com",
+          passwordLabel: "Password",
+          passwordPlaceholder: "Choose a password",
+          registerButton: "Register",
+          alreadyHaveAccount: "Already have an account?",
+          signInLink: "Sign in",
+        },
+        rw: {
+          createAccount: "Iyandikishe konti yawe",
+          registerDescription: "Iyandikishe kugirango ubungabunge gahunda yawe, imirimo, n’iterambere ry’uburezi.",
+          usernameLabel: "Izina rya konti",
+          usernamePlaceholder: "Izina ryawe",
+          fullNameLabel: "Amazina yuzuye",
+          fullNamePlaceholder: "Ubushake",
+          emailLabel: "Imeyili",
+          emailPlaceholder: "wowe@example.com",
+          passwordLabel: "Ijambo ry'ibanga",
+          passwordPlaceholder: "Hitamo ijambo ry'ibanga",
+          registerButton: "Iyandikishe",
+          alreadyHaveAccount: "Ufite konti?",
+          signInLink: "Injira",
+        },
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeLanguageSwitch("languageSwitchButton", registerTranslations, "languageLabel");
+      });
+    </script>
   </body>
 </html>

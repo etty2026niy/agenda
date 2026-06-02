@@ -12,47 +12,60 @@
       class="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden"
     >
       <div class="px-8 py-10">
-        <h1 class="text-3xl font-bold text-slate-900 mb-2">Welcome back</h1>
-        <p class="text-slate-500 mb-8">
-          Log in to access your Agenda Pro dashboard.
-        </p>
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h1 class="text-3xl font-bold text-slate-900 mb-2" data-translate-key="welcomeBack">Welcome back</h1>
+            <p class="text-slate-500" data-translate-key="loginDescription">Log in to access your Agenda Pro dashboard.</p>
+          </div>
+          <button
+            id="languageSwitchButton"
+            class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold hover:bg-slate-50"
+          >
+            <span class="material-symbols-outlined" data-icon="language">language</span>
+            <span id="languageLabel">Kinyarwanda</span>
+          </button>
+        </div>
 
         <div id="authMessage" class="invisible text-sm mb-4"></div>
 
         <form id="loginForm" class="space-y-5">
           <label class="block">
-            <span class="text-slate-700">Email</span>
+            <span class="text-slate-700" data-translate-key="emailLabel">Email</span>
             <input
               id="loginEmail"
               type="email"
               required
               class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
               placeholder="you@example.com"
+              data-placeholder-key="emailPlaceholder"
             />
           </label>
           <label class="block">
-            <span class="text-slate-700">Password</span>
+            <span class="text-slate-700" data-translate-key="passwordLabel">Password</span>
             <input
               id="loginPassword"
               type="password"
               required
               class="mt-1 block w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
               placeholder="Enter your password"
+              data-placeholder-key="passwordPlaceholder"
             />
           </label>
           <button
             type="submit"
             class="w-full rounded-2xl bg-blue-600 text-white py-3 font-semibold hover:bg-blue-700 transition"
+            data-translate-key="logInButton"
           >
             Log In
           </button>
         </form>
 
         <div class="mt-8 text-center text-sm text-slate-500">
-          Don't have an account?
+          <span data-translate-key="noAccount">Don't have an account?</span>
           <a
             href="register.html"
             class="font-semibold text-blue-600 hover:underline"
+            data-translate-key="createOne"
             >Create one</a
           >
         </div>
@@ -60,5 +73,35 @@
     </div>
 
     <script src="js/auth.js"></script>
+    <script src="js/translation.js"></script>
+    <script>
+      const loginTranslations = {
+        en: {
+          welcomeBack: "Welcome back",
+          loginDescription: "Log in to access your Agenda Pro dashboard.",
+          emailLabel: "Email",
+          passwordLabel: "Password",
+          emailPlaceholder: "you@example.com",
+          passwordPlaceholder: "Enter your password",
+          logInButton: "Log In",
+          noAccount: "Don't have an account?",
+          createOne: "Create one",
+        },
+        rw: {
+          welcomeBack: "Murakaza neza",
+          loginDescription: "Injira kugira ngo ubone dashboard yawe ya Agenda Pro.",
+          emailLabel: "Imeyili",
+          passwordLabel: "Ijambo ry'ibanga",
+          emailPlaceholder: "wowe@example.com",
+          passwordPlaceholder: "Andika ijambo ry'ibanga",
+          logInButton: "Injira",
+          noAccount: "Nta konti ufite?",
+          createOne: "Iyandikishe",
+        },
+      };
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeLanguageSwitch("languageSwitchButton", loginTranslations, "languageLabel");
+      });
+    </script>
   </body>
 </html>

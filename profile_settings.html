@@ -257,14 +257,15 @@
             >dark_mode</span
           >
         </button>
-        <div
-          class="flex items-center gap-xs text-blue-700 dark:text-blue-400 font-semibold cursor-pointer"
+        <button
+          id="languageSwitchButton"
+          class="flex items-center gap-xs text-blue-700 dark:text-blue-400 font-semibold rounded-full px-2 py-1 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
           <span class="material-symbols-outlined" data-icon="language"
             >language</span
           >
-          <span class="hidden sm:block">Kinyarwanda</span>
-        </div>
+          <span id="languageLabel" class="hidden sm:block">Kinyarwanda</span>
+        </button>
         <img
           alt="User avatar"
           class="h-8 w-8 rounded-full border border-slate-200"
@@ -291,7 +292,7 @@
           <span class="material-symbols-outlined" data-icon="dashboard"
             >dashboard</span
           >
-          <span>Dashboard</span>
+          <span data-translate-key="dashboard">Dashboard</span>
         </a>
         <a
           class="text-slate-600 dark:text-slate-400 px-6 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 transition-all duration-200 ease-in-out flex items-center gap-sm"
@@ -302,7 +303,7 @@
             data-icon="assignment_turned_in"
             >assignment_turned_in</span
           >
-          <span>Task Management</span>
+          <span data-translate-key="taskManagement">Task Management</span>
         </a>
         <a
           class="text-slate-600 dark:text-slate-400 px-6 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 transition-all duration-200 ease-in-out flex items-center gap-sm"
@@ -311,7 +312,7 @@
           <span class="material-symbols-outlined" data-icon="menu_book"
             >menu_book</span
           >
-          <span>Learning Tracker</span>
+          <span data-translate-key="learningTracker">Learning Tracker</span>
         </a>
         <a
           class="text-slate-600 dark:text-slate-400 px-6 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600 transition-all duration-200 ease-in-out flex items-center gap-sm"
@@ -320,7 +321,7 @@
           <span class="material-symbols-outlined" data-icon="leaderboard"
             >leaderboard</span
           >
-          <span>Reports</span>
+          <span data-translate-key="reports">Reports</span>
         </a>
         <a
           class="text-blue-700 dark:text-blue-400 border-l-4 border-blue-700 font-bold bg-blue-50/50 dark:bg-blue-900/10 px-6 py-3 transition-all duration-200 ease-in-out flex items-center gap-sm"
@@ -332,19 +333,20 @@
             style="font-variation-settings: &quot;FILL&quot; 1"
             >person</span
           >
-          <span>Profile</span>
+          <span data-translate-key="profile">Profile</span>
         </a>
       </div>
       <div class="px-6">
         <button
           class="w-full bg-primary text-on-primary py-sm rounded-lg font-bold shadow-sm active:scale-95 transition-all"
+          data-translate-key="newEntry"
         >
           New Entry
         </button>
       </div>
     </nav>
     <!-- Main Canvas -->
-    <main class="md:pl-[280px] pt-16 min-h-screen pb-16 md:pb-0">
+    <main class="md:pl-[280px] pt-16 min-h-screen pb-16 md:pb-0 overflow-x-hidden">
       <div class="p-md md:p-xl max-w-5xl mx-auto">
         <!-- Bento Profile Layout -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
@@ -370,10 +372,10 @@
               </button>
             </div>
             <div class="text-center md:text-left flex-grow">
-              <h2 class="font-display-lg text-display-lg text-on-surface">
+              <h2 class="font-display-lg text-display-lg text-on-surface" data-translate-key="userName">
                 John Doe
               </h2>
-              <p class="font-body-lg text-on-surface-variant mb-xs">
+              <p class="font-body-lg text-on-surface-variant mb-xs" data-translate-key="userEmail">
                 john@example.com
               </p>
               <div
@@ -381,10 +383,12 @@
               >
                 <span
                   class="px-sm py-xs bg-secondary-container text-on-secondary-container rounded-full text-label-md font-semibold"
+                  data-translate-key="premiumMember"
                   >Premium Member</span
                 >
                 <span
                   class="px-sm py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full text-label-md font-semibold"
+                  data-translate-key="seniorPlanner"
                   >Senior Planner</span
                 >
               </div>
@@ -392,11 +396,13 @@
             <div class="flex flex-col gap-xs w-full md:w-auto">
               <button
                 class="bg-primary hover:bg-blue-700 text-on-primary font-bold py-xs px-md rounded transition-colors active:scale-95"
+                data-translate-key="editDetails"
               >
                 Edit Details
               </button>
               <button
                 class="outline outline-1 outline-outline text-on-surface-variant hover:bg-surface-container-high py-xs px-md rounded transition-colors"
+                data-translate-key="logOut"
               >
                 Log Out
               </button>
@@ -449,10 +455,10 @@
                   ></div>
                 </label>
               </div>
-              <h4 class="font-display-md text-on-surface mb-xs">
+              <h4 class="font-display-md text-on-surface mb-xs" data-translate-key="notificationsHeading">
                 Notifications
               </h4>
-              <p class="font-body-md text-on-surface-variant">
+              <p class="font-body-md text-on-surface-variant" data-translate-key="notificationsDescription">
                 Stay updated with systematic task alerts and daily schedule
                 briefings.
               </p>
@@ -476,8 +482,8 @@
                   ></div>
                 </label>
               </div>
-              <h4 class="font-display-md text-on-surface mb-xs">Dark Mode</h4>
-              <p class="font-body-md text-on-surface-variant">
+              <h4 class="font-display-md text-on-surface mb-xs" data-translate-key="darkModeHeading">Dark Mode</h4>
+              <p class="font-body-md text-on-surface-variant" data-translate-key="darkModeDescription">
                 Theme controlled globally from the header toggle above. Current
                 theme affects the entire website.
               </p>
@@ -495,7 +501,7 @@
                   >
                 </div>
               </div>
-              <h4 class="font-display-md text-on-surface mb-xs">
+              <h4 class="font-display-md text-on-surface mb-xs" data-translate-key="languagePreferenceHeading">
                 Language Preference
               </h4>
               <div class="mt-sm space-y-xs">
@@ -508,8 +514,7 @@
                     name="lang"
                     type="radio"
                   />
-                  <span class="font-body-md text-on-surface"
-                    >English (System Default)</span
+                  <span class="font-body-md text-on-surface" data-translate-key="englishOption">English (System Default)</span>
                   >
                 </label>
                 <label
@@ -520,7 +525,7 @@
                     name="lang"
                     type="radio"
                   />
-                  <span class="font-body-md text-on-surface">Kinyarwanda</span>
+                  <span class="font-body-md text-on-surface" data-translate-key="kinyarwandaOption">Kinyarwanda</span>
                 </label>
               </div>
             </div>
@@ -600,10 +605,10 @@
                   >lock</span
                 >
                 <div>
-                  <p class="font-body-lg text-on-surface font-semibold">
+                  <p class="font-body-lg text-on-surface font-semibold" data-translate-key="securitySettings">
                     Security Settings
                   </p>
-                  <p class="font-body-md text-on-surface-variant">
+                  <p class="font-body-md text-on-surface-variant" data-translate-key="securitySettingsDetail">
                     Update password and 2FA
                   </p>
                 </div>
@@ -625,10 +630,10 @@
                   >shield</span
                 >
                 <div>
-                  <p class="font-body-lg text-on-surface font-semibold">
+                  <p class="font-body-lg text-on-surface font-semibold" data-translate-key="dataPrivacy">
                     Data Privacy
                   </p>
-                  <p class="font-body-md text-on-surface-variant">
+                  <p class="font-body-md text-on-surface-variant" data-translate-key="dataPrivacyDetail">
                     Manage your data exports
                   </p>
                 </div>
@@ -654,7 +659,7 @@
         <span class="material-symbols-outlined" data-icon="dashboard"
           >dashboard</span
         >
-        <span class="text-[10px]">Dashboard</span>
+        <span class="text-[10px]" data-translate-key="dashboard">Dashboard</span>
       </a>
       <a
         class="flex flex-col items-center gap-0.5 text-slate-500"
@@ -663,7 +668,7 @@
         <span class="material-symbols-outlined" data-icon="assignment_turned_in"
           >assignment_turned_in</span
         >
-        <span class="text-[10px]">Tasks</span>
+        <span class="text-[10px]" data-translate-key="tasks">Tasks</span>
       </a>
       <a
         class="flex flex-col items-center gap-0.5 text-slate-500"
@@ -672,7 +677,7 @@
         <span class="material-symbols-outlined" data-icon="menu_book"
           >menu_book</span
         >
-        <span class="text-[10px]">Learn</span>
+        <span class="text-[10px]" data-translate-key="learn">Learn</span>
       </a>
       <a
         class="flex flex-col items-center gap-0.5 text-blue-700 font-bold"
@@ -684,7 +689,7 @@
           style="font-variation-settings: &quot;FILL&quot; 1"
           >person</span
         >
-        <span class="text-[10px]">Profile</span>
+        <span class="text-[10px]" data-translate-key="profile">Profile</span>
       </a>
     </nav>
     <script src="js/auth.js"></script>

@@ -47,22 +47,65 @@
                 Register
               </a>
               <!-- wet -->
-                 <div
-              class="inline-flex items-center gap-2 rounded-full bg-blue-100 text-blue-700 px-4 py-2 text-sm font-semibold"
-            >
-              <span class="h-2.5 w-2.5 rounded-full bg-blue-700"></span>
-              <a href="dashboard.html">Continue without signing in</a>
+                 <div class="flex justify-between items-center gap-4">
+              <div
+                class="inline-flex items-center gap-2 rounded-full bg-blue-100 text-blue-700 px-4 py-2 text-sm font-semibold"
+              >
+                <span class="h-2.5 w-2.5 rounded-full bg-blue-700"></span>
+                <span data-translate-key="productivitySystem">Productivity system for learners and planners</span>
+              </div>
+              <button
+                id="languageSwitchButton"
+                class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold hover:bg-slate-50"
+              >
+                <span class="material-symbols-outlined" data-icon="language">language</span>
+                <span id="languageLabel">Kinyarwanda</span>
+              </button>
             </div>
-            <!-- tex -->
+            <div class="space-y-4">
+              <h1
+                class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900"
+                data-translate-key="heroTitle"
+              >
+                Agenda Pro helps you manage tasks, learning, and progress in one
+                place.
+              </h1>
+              <p class="text-lg text-slate-600 max-w-2xl leading-8" data-translate-key="heroSubtitle">
+                Build your personal productivity hub with agenda planning, task
+                tracking, learning logs, and reports — tailored to your
+                workflow.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="login.html"
+                class="inline-flex items-center justify-center rounded-2xl bg-blue-700 px-6 py-3 text-white font-semibold shadow-lg shadow-blue-200 hover:bg-blue-800 transition"
+                data-translate-key="logIn"
+              >
+                Log In
+              </a>
+              <a
+                href="register.html"
+                class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-slate-900 font-semibold hover:bg-slate-100 transition"
+                data-translate-key="register"
+              >
+                Register
+              </a>
+              <div
+                class="inline-flex items-center gap-2 rounded-full bg-blue-100 text-blue-700 px-4 py-2 text-sm font-semibold"
+              >
+                <span class="h-2.5 w-2.5 rounded-full bg-blue-700"></span>
+                <a href="dashboard.html" data-translate-key="continueGuest">Continue without signing in</a>
+              </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div
                 class="rounded-3xl bg-white border border-slate-200 p-6 shadow-sm"
               >
-                <h2 class="text-base font-semibold text-slate-900">
+                <h2 class="text-base font-semibold text-slate-900" data-translate-key="taskManagementCardTitle">
                   Task Management
                 </h2>
-                <p class="mt-2 text-sm text-slate-600">
+                <p class="mt-2 text-sm text-slate-600" data-translate-key="taskManagementCardText">
                   Create, organize, and track your tasks with priorities and due
                   dates.
                 </p>
@@ -70,10 +113,10 @@
               <div
                 class="rounded-3xl bg-white border border-slate-200 p-6 shadow-sm"
               >
-                <h2 class="text-base font-semibold text-slate-900">
+                <h2 class="text-base font-semibold text-slate-900" data-translate-key="learningTrackerCardTitle">
                   Learning Tracker
                 </h2>
-                <p class="mt-2 text-sm text-slate-600">
+                <p class="mt-2 text-sm text-slate-600" data-translate-key="learningTrackerCardText">
                   Log study sessions, measure progress, and keep learning goals
                   visible.
                 </p>
@@ -81,10 +124,10 @@
               <div
                 class="rounded-3xl bg-white border border-slate-200 p-6 shadow-sm"
               >
-                <h2 class="text-base font-semibold text-slate-900">
+                <h2 class="text-base font-semibold text-slate-900" data-translate-key="reportsInsightsCardTitle">
                   Reports & Insights
                 </h2>
-                <p class="mt-2 text-sm text-slate-600">
+                <p class="mt-2 text-sm text-slate-600" data-translate-key="reportsInsightsCardText">
                   View your productivity trends and make better daily decisions.
                 </p>
               </div>
@@ -138,10 +181,51 @@
         <div
           class="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-slate-500"
         >
-          <p>Agenda Pro &copy; 2026. Designed for productivity and learning.</p>
-          <p>Built with HTML, TailwindCSS, JavaScript, Node.js, and SQLite.</p>
+      <p data-translate-key="footerLine1">Agenda Pro © 2026. Designed for productivity and learning.</p>
+          <p data-translate-key="footerLine2">Built with HTML, TailwindCSS, JavaScript, Node.js, and SQLite.</p>
         </div>
       </footer>
     </main>
+    <script src="js/translation.js"></script>
+    <script>
+      const indexTranslations = {
+        en: {
+          productivitySystem: "Productivity system for learners and planners",
+          heroTitle: "Agenda Pro helps you manage tasks, learning, and progress in one place.",
+          heroSubtitle: "Build your personal productivity hub with agenda planning, task tracking, learning logs, and reports — tailored to your workflow.",
+          logIn: "Log In",
+          register: "Register",
+          continueGuest: "Continue without signing in",
+          taskManagementCardTitle: "Task Management",
+          taskManagementCardText: "Create, organize, and track your tasks with priorities and due dates.",
+          learningTrackerCardTitle: "Learning Tracker",
+          learningTrackerCardText: "Log study sessions, measure progress, and keep learning goals visible.",
+          reportsInsightsCardTitle: "Reports & Insights",
+          reportsInsightsCardText: "View your productivity trends and make better daily decisions.",
+          footerLine1: "Agenda Pro © 2026. Designed for productivity and learning.",
+          footerLine2: "Built with HTML, TailwindCSS, JavaScript, Node.js, and SQLite.",
+        },
+        rw: {
+          productivitySystem: "Sisitemu y’umusaruro ku biga kandi bitegura neza",
+          heroTitle: "Agenda Pro igufasha gucunga imirimo, kwiga, no kugera ku ntego byose hamwe.",
+          heroSubtitle: "Tegura urubuga rwawe rw’umusaruro n’imirimo, gukurikirana ibyo wiga, inyandiko ziga, na raporo — bijyanye n’imikorere yawe.",
+          logIn: "Injira",
+          register: "Iyandikishe",
+          continueGuest: "Komeza utinjiye",
+          taskManagementCardTitle: "Imicungire y’Imirimo",
+          taskManagementCardText: "Tegura, ugenzure, kandi ukurikire imirimo yawe ifite ibyiciro n’itariki yo kurangiza.",
+          learningTrackerCardTitle: "Umukurikirane w’Uburezi",
+          learningTrackerCardText: "Andika ibiganiro by’amasomo, upime intambwe, kandi ukomeze intego z’ubumenyi hafi.",
+          reportsInsightsCardTitle: "Raporo & Ibyegeranyo",
+          reportsInsightsCardText: "Reba uko ushyira mu bikorwa umusaruro wawe kugira ngo ufate ibyemezo byiza buri munsi.",
+          footerLine1: "Agenda Pro © 2026. Yakozwe kugirango ifashe umusaruro n’uburezi.",
+          footerLine2: "Yubatswe na HTML, TailwindCSS, JavaScript, Node.js, na SQLite.",
+        },
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeLanguageSwitch("languageSwitchButton", indexTranslations, "languageLabel");
+      });
+    </script>
   </body>
 </html>
