@@ -1,6 +1,8 @@
 Vercel + Supabase deployment guide (concise)
 
-1) Create a GitHub repo and push this project.
+1) Use the `agenda` repo as the full deployment repo.
+   - This project root now includes `index.html`, `api/`, and `package.json`.
+   - Vercel must be connected to this repo, not a separate backend-only repo.
 
 2) Supabase (managed Postgres)
    - Create a free Supabase account (no card normally required).
